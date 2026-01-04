@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔法行事曆</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <h1>我的行事曆</h1>
+        <div class="calendar">
+            <div class="calendar-header">
+                <button id="prev-month">‹</button>
+                <h2 id="month-year"></h2>
+                <button id="next-month">›</button>
+            </div>
+            <div class="calendar-days">
+                <div class="day-header">日</div>
+                <div class="day-header">一</div>
+                <div class="day-header">二</div>
+                <div class="day-header">三</div>
+                <div class="day-header">四</div>
+                <div class="day-header">五</div>
+                <div class="day-header">六</div>
+            </div>
+            <div class="calendar-grid" id="calendar-grid"></div>
+        </div>
+    </div>
+
+    <div id="birthday-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="birthday-content">
+                <h2>生日快樂！🎉</h2>
+                <p>歡迎來到霍格華茲！今天是你的特別日子。</p>
+                <div class="hogwarts-elements">
+                    <div class="time-converter">
+                        <h3>時間轉換器</h3>
+                        <p>麻瓜時間: <span id="muggle-time"></span></p>
+                        <p>巫師時間: <span id="wizard-time"></span></p>
+                        <button id="convert-time">轉換時間</button>
+                    </div>
+                    <div class="platform-9-3-4">
+                        <h3>9¾ 月台</h3>
+                        <p>準備好搭上霍格華茲特快列車了嗎？</p>
+                        <img src="https://via.placeholder.com/300x200?text=9+3/4+Platform" alt="9¾ 月台" class="platform-image">
+                    </div>
+                </div>
+                <canvas id="confetti-canvas"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
