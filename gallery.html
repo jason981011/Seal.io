@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔法畫廊 - Seal.io</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <!-- 導航 -->
+    <nav class="magic-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🧙‍♂️ 魔法世界</a>
+            <div class="nav-links">
+                <a href="calendar.html" class="nav-link">行事曆</a>
+                <a href="birthday.html" class="nav-link">慶祝</a>
+                <a href="world.html" class="nav-link">探索</a>
+                <a href="gallery.html" class="nav-link active">畫廊</a>
+            </div>
+            <button class="nav-toggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- 魔法畫廊 -->
+    <div class="magic-gallery">
+        <!-- 粒子背景 -->
+        <div id="particles-js"></div>
+
+        <!-- 畫廊標題 -->
+        <div class="gallery-header">
+            <h1 class="gallery-title">魔法畫廊</h1>
+            <p class="gallery-subtitle">珍藏的魔法回憶</p>
+        </div>
+
+        <!-- 相簿分類 -->
+        <div class="album-categories">
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">全部</button>
+                <button class="category-tab" data-category="childhood">童年時光</button>
+                <button class="category-tab" data-category="family">家人陪伴</button>
+                <button class="category-tab" data-category="friends">朋友們</button>
+                <button class="category-tab" data-category="magic">魔法時刻</button>
+            </div>
+        </div>
+
+        <!-- 相片網格 -->
+        <div class="photo-grid" id="photo-grid">
+            <!-- 相片項目將通過JavaScript動態生成 -->
+        </div>
+
+        <!-- 相片燈箱 -->
+        <div id="lightbox" class="lightbox hidden">
+            <div class="lightbox-content">
+                <span class="lightbox-close">&times;</span>
+                <img class="lightbox-image" id="lightbox-image" src="" alt="">
+                <div class="lightbox-info">
+                    <h3 id="lightbox-title"></h3>
+                    <p id="lightbox-description"></p>
+                    <div class="lightbox-meta">
+                        <span id="lightbox-date"></span>
+                        <span id="lightbox-location"></span>
+                    </div>
+                </div>
+                <button class="lightbox-nav lightbox-prev" id="lightbox-prev">‹</button>
+                <button class="lightbox-nav lightbox-next" id="lightbox-next">›</button>
+            </div>
+        </div>
+
+        <!-- 上傳區域 -->
+        <div class="upload-section">
+            <div class="upload-container">
+                <h2 class="upload-title">添加新回憶</h2>
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-icon">📸</div>
+                    <p>拖拽照片到這裡或點擊選擇</p>
+                    <input type="file" id="photo-upload" accept="image/*" multiple style="display: none;">
+                    <button class="upload-btn" id="upload-btn">選擇照片</button>
+                </div>
+                <div class="upload-form hidden" id="upload-form">
+                    <input type="text" id="photo-title" placeholder="照片標題" required>
+                    <textarea id="photo-description" placeholder="照片描述"></textarea>
+                    <select id="photo-category">
+                        <option value="childhood">童年時光</option>
+                        <option value="family">家人陪伴</option>
+                        <option value="friends">朋友們</option>
+                        <option value="magic">魔法時刻</option>
+                    </select>
+                    <input type="date" id="photo-date">
+                    <input type="text" id="photo-location" placeholder="拍攝地點">
+                    <div class="form-buttons">
+                        <button class="cancel-btn" id="cancel-upload">取消</button>
+                        <button class="submit-btn" id="submit-upload">上傳</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 魔法回憶牆 -->
+        <div class="memory-wall">
+            <div class="wall-container">
+                <h2 class="wall-title">魔法回憶牆</h2>
+                <div class="memory-notes" id="memory-notes">
+                    <!-- 回憶便條將通過JavaScript動態生成 -->
+                </div>
+                <button class="add-memory-btn" id="add-memory-btn">添加回憶</button>
+            </div>
+        </div>
+
+        <!-- 添加回憶模態框 -->
+        <div id="memory-modal" class="memory-modal hidden">
+            <div class="modal-content">
+                <span class="modal-close" id="memory-modal-close">&times;</span>
+                <h3>添加魔法回憶</h3>
+                <textarea id="memory-text" placeholder="寫下你的魔法回憶..." rows="4"></textarea>
+                <div class="memory-colors">
+                    <span class="color-option" data-color="#ff6b6b" style="background: #ff6b6b;"></span>
+                    <span class="color-option" data-color="#4ecdc4" style="background: #4ecdc4;"></span>
+                    <span class="color-option" data-color="#45b7d1" style="background: #45b7d1;"></span>
+                    <span class="color-option" data-color="#f9ca24" style="background: #f9ca24;"></span>
+                    <span class="color-option" data-color="#f0932b" style="background: #f0932b;"></span>
+                    <span class="color-option" data-color="#eb4d4b" style="background: #eb4d4b;"></span>
+                </div>
+                <button class="submit-memory-btn" id="submit-memory">添加回憶</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/particles-config.js"></script>
+    <script src="assets/js/gallery.js"></script>
+</body>
+</html>

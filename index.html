@@ -3,55 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>魔法行事曆</title>
+    <title>魔法生日驚喜 - 入口</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <div class="calendar-container">
-        <h1>我的行事曆</h1>
-        <div class="calendar">
-            <div class="calendar-header">
-                <button id="prev-month">‹</button>
-                <h2 id="month-year"></h2>
-                <button id="next-month">›</button>
-            </div>
-            <div class="calendar-days">
-                <div class="day-header">日</div>
-                <div class="day-header">一</div>
-                <div class="day-header">二</div>
-                <div class="day-header">三</div>
-                <div class="day-header">四</div>
-                <div class="day-header">五</div>
-                <div class="day-header">六</div>
-            </div>
-            <div class="calendar-grid" id="calendar-grid"></div>
+    <!-- 載入動畫 -->
+    <div id="loading-screen">
+        <div class="magic-circle">
+            <div class="inner-circle"></div>
+            <div class="outer-circle"></div>
+        </div>
+        <h1 class="loading-text">正在施展魔法...</h1>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
         </div>
     </div>
 
-    <div id="birthday-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="birthday-content">
-                <h2>生日快樂！🎉</h2>
-                <p>歡迎來到霍格華茲！今天是你的特別日子。</p>
-                <div class="hogwarts-elements">
-                    <div class="time-converter">
-                        <h3>時間轉換器</h3>
-                        <p>麻瓜時間: <span id="muggle-time"></span></p>
-                        <p>巫師時間: <span id="wizard-time"></span></p>
-                        <button id="convert-time">轉換時間</button>
+    <!-- 主要內容 -->
+    <div id="main-content" class="hidden">
+        <!-- 3D 背景 -->
+        <div id="three-bg"></div>
+
+        <!-- 粒子背景 -->
+        <div id="particles-js"></div>
+
+        <!-- 主要容器 -->
+        <div class="portal-container">
+            <div class="floating-elements">
+                <div class="magic-star star-1">✨</div>
+                <div class="magic-star star-2">⭐</div>
+                <div class="magic-star star-3">🌟</div>
+                <div class="magic-wand">🪄</div>
+                <div class="magic-book">📖</div>
+            </div>
+
+            <div class="portal-content">
+                <div class="title-section">
+                    <h1 class="main-title">魔法生日驚喜</h1>
+                    <p class="subtitle">準備好進入魔法世界了嗎？</p>
+                </div>
+
+                <div class="portal-options">
+                    <div class="portal-card calendar-portal" data-page="calendar">
+                        <div class="card-icon">📅</div>
+                        <h3>魔法行事曆</h3>
+                        <p>發現隱藏的生日驚喜</p>
+                        <div class="card-glow"></div>
                     </div>
-                    <div class="platform-9-3-4">
-                        <h3>9¾ 月台</h3>
-                        <p>準備好搭上霍格華茲特快列車了嗎？</p>
-                        <img src="https://via.placeholder.com/300x200?text=9+3/4+Platform" alt="9¾ 月台" class="platform-image">
+
+                    <div class="portal-card birthday-portal" data-page="birthday">
+                        <div class="card-icon">🎂</div>
+                        <h3>生日慶祝</h3>
+                        <p>專屬於你的魔法時刻</p>
+                        <div class="card-glow"></div>
+                    </div>
+
+                    <div class="portal-card world-portal" data-page="world">
+                        <div class="card-icon">🧙‍♂️</div>
+                        <h3>魔法世界</h3>
+                        <p>探索霍格華茲的秘密</p>
+                        <div class="card-glow"></div>
+                    </div>
+
+                    <div class="portal-card gallery-portal" data-page="gallery">
+                        <div class="card-icon">🖼️</div>
+                        <h3>魔法畫廊</h3>
+                        <p>珍貴回憶的魔法相簿</p>
+                        <div class="card-glow"></div>
                     </div>
                 </div>
-                <canvas id="confetti-canvas"></canvas>
+
+                <div class="magic-instructions">
+                    <p>點擊任一魔法門戶開始您的冒險</p>
+                    <div class="instruction-arrows">
+                        <span class="arrow">↑</span>
+                        <span class="arrow">↓</span>
+                        <span class="arrow">←</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <!-- 音效控制 -->
+        <div class="audio-controls">
+            <button id="bg-music-toggle" class="audio-btn">
+                <span class="music-icon">🎵</span>
+                <span class="music-text">背景音樂</span>
+            </button>
+            <button id="sound-effects-toggle" class="audio-btn">
+                <span class="sound-icon">🔊</span>
+                <span class="sound-text">音效</span>
+            </button>
+        </div>
+
+        <!-- 隱藏音頻元素 -->
+        <audio id="bg-music" loop preload="auto">
+            <source src="assets/audio/magic-bg.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="portal-sound" preload="auto">
+            <source src="assets/audio/portal.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="click-sound" preload="auto">
+            <source src="assets/audio/click.mp3" type="audio/mpeg">
+        </audio>
     </div>
 
-    <script src="script.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/particles-config.js"></script>
+    <script src="assets/js/three-bg.js"></script>
 </body>
 </html>
