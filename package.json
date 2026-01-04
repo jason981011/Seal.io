@@ -1,0 +1,13 @@
+{
+  "name": "magical-birthday-celebration",
+  "version": "1.0.0",
+  "description": "A magical Harry Potter themed birthday celebration website with calendar interface, multiple interactive pages, and stunning animations",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "build": "echo 'No build step required for static site'"
+  },
+  "keywords": ["birthday", "celebration", "harry-potter", "magic", "calendar", "interactive"],
+  "author": "Seal.io",
+  "license": "MIT"
+}
