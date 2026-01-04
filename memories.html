@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊彥亭的魔法回憶 - 回憶</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <!-- 載入動畫 -->
+    <div id="loading-screen">
+        <div class="magic-loader">
+            <div class="loader-sparkles">
+                <div class="sparkle sparkle-1">💝</div>
+                <div class="sparkle sparkle-2">💫</div>
+                <div class="sparkle sparkle-3">🌟</div>
+                <div class="sparkle sparkle-4">✨</div>
+            </div>
+            <div class="loader-ring"></div>
+            <div class="loader-text">重溫美好回憶...</div>
+        </div>
+    </div>
+
+    <!-- 主要內容 -->
+    <div id="main-content" class="hidden">
+        <!-- 3D 背景場景 -->
+        <div id="three-bg"></div>
+
+        <!-- 粒子背景 -->
+        <div id="particles-js"></div>
+
+        <!-- 回憶粒子 -->
+        <div class="memory-particles">
+            <div class="memory-particle particle-1">💝</div>
+            <div class="memory-particle particle-2">🌸</div>
+            <div class="memory-particle particle-3">⭐</div>
+            <div class="memory-particle particle-4">🌙</div>
+            <div class="memory-particle particle-5">💫</div>
+        </div>
+
+        <!-- 導航 -->
+        <nav class="magic-nav">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <span class="logo-sparkle">✨</span>
+                    熊彥亭的魔法世界
+                    <span class="logo-sparkle">✨</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">歡迎</a>
+                    <a href="celebration.html" class="nav-link">慶祝</a>
+                    <a href="memories.html" class="nav-link active">回憶</a>
+                    <a href="wishes.html" class="nav-link">許願</a>
+                    <a href="gallery.html" class="nav-link">相簿</a>
+                </div>
+                <button class="nav-toggle">☰</button>
+            </div>
+        </nav>
+
+        <!-- 回憶主區域 -->
+        <div class="memories-container">
+            <!-- 回憶標題 -->
+            <section class="memories-header">
+                <h1 class="memories-title">
+                    <span class="title-icon">💝</span>
+                    我們的珍貴回憶
+                    <span class="title-icon">💝</span>
+                </h1>
+                <p class="memories-subtitle">
+                    每一個瞬間，都是我們故事的一部分
+                </p>
+            </section>
+
+            <!-- 時間軸 -->
+            <section class="timeline-section">
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+
+                    <!-- 2024年 -->
+                    <div class="timeline-item" data-year="2024">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2024</div>
+                            <h3>充滿驚喜的一年</h3>
+                            <div class="timeline-memories">
+                                <div class="memory-card">
+                                    <div class="memory-image">
+                                        <div class="placeholder-image">📸</div>
+                                    </div>
+                                    <div class="memory-info">
+                                        <h4>春天的相遇</h4>
+                                        <p>在櫻花盛開的季節，我們的緣分開始了。那是一個溫暖的下午，陽光透過樹葉灑落...</p>
+                                        <div class="memory-date">2024.03.15</div>
+                                    </div>
+                                </div>
+
+                                <div class="memory-card">
+                                    <div class="memory-image">
+                                        <div class="placeholder-image">🎂</div>
+                                    </div>
+                                    <div class="memory-info">
+                                        <h4>夏日的慶祝</h4>
+                                        <p>在海邊度過的美好時光，夕陽西下，我們一起許下心願，看著浪花輕輕拍打沙灘...</p>
+                                        <div class="memory-date">2024.07.20</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2023年 -->
+                    <div class="timeline-item" data-year="2023">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2023</div>
+                            <h3>成長的足跡</h3>
+                            <div class="timeline-memories">
+                                <div class="memory-card">
+                                    <div class="memory-image">
+                                        <div class="placeholder-image">🎓</div>
+                                    </div>
+                                    <div class="memory-info">
+                                        <h4>學業的里程碑</h4>
+                                        <p>見證你的每一次進步，每一個突破。從挑戰到成功，這一路上有你的堅持和努力...</p>
+                                        <div class="memory-date">2023.06.30</div>
+                                    </div>
+                                </div>
+
+                                <div class="memory-card">
+                                    <div class="memory-image">
+                                        <div class="placeholder-image">🎨</div>
+                                    </div>
+                                    <div class="memory-info">
+                                        <h4>創意的火花</h4>
+                                        <p>你的才華如繁星般閃耀，每一個作品都承載著你的熱情和靈感...</p>
+                                        <div class="memory-date">2023.11.12</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2022年 -->
+                    <div class="timeline-item" data-year="2022">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2022</div>
+                            <h3>夢想的起點</h3>
+                            <div class="timeline-memories">
+                                <div class="memory-card">
+                                    <div class="memory-image">
+                                        <div class="placeholder-image">🌟</div>
+                                    </div>
+                                    <div class="memory-info">
+                                        <h4>新的開始</h4>
+                                        <p>每一個夢想都從一個小小的決定開始。看著你勇敢地邁出第一步...</p>
+                                        <div class="memory-date">2022.01.16</div>
+                                    </div>
+                                </div>
+
+                                <div class="memory-card">
+                                    <div class="memory-image">
+                                        <div class="placeholder-image">🤝</div>
+                                    </div>
+                                    <div class="memory-info">
+                                        <h4>友誼的建立</h4>
+                                        <p>在這個充滿未知的階段，我們成為了彼此最堅實的依靠...</p>
+                                        <div class="memory-date">2022.09.08</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 回憶相簿 -->
+            <section class="memory-gallery">
+                <h2 class="section-title">
+                    <span class="title-icon">📸</span>
+                    回憶相簿
+                    <span class="title-icon">📸</span>
+                </h2>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <div class="placeholder-image large">🌸</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>春天的記憶</h4>
+                                    <p>櫻花盛開的季節</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <div class="placeholder-image large">🏖️</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>海邊的約定</h4>
+                                    <p>夏日的美好時光</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <div class="placeholder-image large">🎨</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>創意的火花</h4>
+                                    <p>藝術的靈感時刻</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <div class="placeholder-image large">🌟</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>夢想的實現</h4>
+                                    <p>每一個進步的足跡</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 回憶留言牆 -->
+            <section class="memory-wall">
+                <h2 class="section-title">
+                    <span class="title-icon">💌</span>
+                    回憶留言牆
+                    <span class="title-icon">💌</span>
+                </h2>
+
+                <div class="wall-messages">
+                    <div class="message-note">
+                        <p>"熊彥亭，謝謝你出現在我的生命中。每一個和你相處的瞬間，都是珍寶。"</p>
+                        <div class="note-decoration">✨</div>
+                        <div class="note-date">2024.01.16</div>
+                    </div>
+
+                    <div class="message-note">
+                        <p>"看著你一步步實現夢想，那種感覺就像見證奇蹟一樣。"</p>
+                        <div class="note-decoration">💫</div>
+                        <div class="note-date">2024.03.15</div>
+                    </div>
+
+                    <div class="message-note">
+                        <p>"你的笑容總是能照亮我最灰暗的日子。謝謝你一直都在。"</p>
+                        <div class="note-decoration">🌟</div>
+                        <div class="note-date">2024.07.20</div>
+                    </div>
+
+                    <div class="message-note">
+                        <p>"每一次的相遇，都是命運最好的安排。熊彥亭，你是上天給我的禮物。"</p>
+                        <div class="note-decoration">💝</div>
+                        <div class="note-date">2023.12.25</div>
+                    </div>
+                </div>
+
+                <!-- 添加新留言 -->
+                <div class="add-message">
+                    <button class="add-message-btn" id="add-memory-btn">
+                        <span class="btn-icon">✏️</span>
+                        添加回憶留言
+                    </button>
+                </div>
+            </section>
+
+            <!-- 添加留言模態框 -->
+            <div id="memory-modal" class="modal hidden">
+                <div class="modal-overlay"></div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>添加回憶留言</h3>
+                        <button class="modal-close" id="memory-modal-close">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="memory-form">
+                            <div class="form-group">
+                                <label for="memory-text">你的留言</label>
+                                <textarea id="memory-text" placeholder="寫下你對熊彥亭的回憶或祝福..." required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>選擇裝飾</label>
+                                <div class="decoration-options">
+                                    <div class="decoration-option" data-decoration="✨">✨</div>
+                                    <div class="decoration-option" data-decoration="💫">💫</div>
+                                    <div class="decoration-option" data-decoration="🌟">🌟</div>
+                                    <div class="decoration-option" data-decoration="💝">💝</div>
+                                    <div class="decoration-option" data-decoration="🌸">🌸</div>
+                                    <div class="decoration-option" data-decoration="⭐">⭐</div>
+                                </div>
+                            </div>
+                            <button type="submit" class="submit-btn">添加留言</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 腳本 -->
+        <script src="assets/js/particles-config.js"></script>
+        <script src="assets/js/three-bg.js"></script>
+        <script src="assets/js/memories.js"></script>
+    </div>
+</body>
+</html>

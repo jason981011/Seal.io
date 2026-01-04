@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>魔法生日驚喜 - 入口</title>
+    <title>熊彥亭的魔法生日 - 入口</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -14,39 +14,158 @@
 <body>
     <!-- 載入動畫 -->
     <div id="loading-screen">
-        <div class="magic-circle">
-            <div class="inner-circle"></div>
-            <div class="outer-circle"></div>
-        </div>
-        <h1 class="loading-text">正在施展魔法...</h1>
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
+        <div class="magic-loader">
+            <div class="loader-sparkles">
+                <div class="sparkle sparkle-1">✨</div>
+                <div class="sparkle sparkle-2">⭐</div>
+                <div class="sparkle sparkle-3">🌟</div>
+                <div class="sparkle sparkle-4">💫</div>
+            </div>
+            <div class="loader-ring"></div>
+            <div class="loader-text">正在準備魔法...</div>
         </div>
     </div>
 
     <!-- 主要內容 -->
     <div id="main-content" class="hidden">
-        <!-- 3D 背景 -->
+        <!-- 3D 背景場景 -->
         <div id="three-bg"></div>
 
         <!-- 粒子背景 -->
         <div id="particles-js"></div>
 
+        <!-- 浮動魔法元素 -->
+        <div class="floating-magic">
+            <div class="magic-orb orb-1"></div>
+            <div class="magic-orb orb-2"></div>
+            <div class="magic-orb orb-3"></div>
+            <div class="magic-crystal crystal-1">💎</div>
+            <div class="magic-crystal crystal-2">🔮</div>
+            <div class="magic-crystal crystal-3">✨</div>
+        </div>
+
         <!-- 主要容器 -->
         <div class="portal-container">
-            <div class="floating-elements">
-                <div class="magic-star star-1">✨</div>
-                <div class="magic-star star-2">⭐</div>
-                <div class="magic-star star-3">🌟</div>
-                <div class="magic-wand">🪄</div>
-                <div class="magic-book">📖</div>
-            </div>
-
-            <div class="portal-content">
-                <div class="title-section">
-                    <h1 class="main-title">魔法生日驚喜</h1>
-                    <p class="subtitle">準備好進入魔法世界了嗎？</p>
+            <!-- 導航 -->
+            <nav class="magic-nav">
+                <div class="nav-container">
+                    <div class="nav-logo">
+                        <span class="logo-sparkle">✨</span>
+                        熊彥亭的魔法世界
+                        <span class="logo-sparkle">✨</span>
+                    </div>
+                    <div class="nav-links">
+                        <a href="#welcome" class="nav-link active">歡迎</a>
+                        <a href="celebration.html" class="nav-link">慶祝</a>
+                        <a href="memories.html" class="nav-link">回憶</a>
+                        <a href="wishes.html" class="nav-link">許願</a>
+                        <a href="gallery.html" class="nav-link">相簿</a>
+                    </div>
+                    <button class="nav-toggle">☰</button>
                 </div>
+            </nav>
+
+            <!-- 歡迎區域 -->
+            <section id="welcome" class="welcome-section">
+                <div class="welcome-content">
+                    <div class="welcome-header">
+                        <h1 class="main-title">
+                            <span class="title-sparkle">✨</span>
+                            熊彥亭的魔法生日
+                            <span class="title-sparkle">✨</span>
+                        </h1>
+                        <div class="birthday-date">
+                            <span class="date-icon">📅</span>
+                            1月16日
+                            <span class="date-icon">🎂</span>
+                        </div>
+                    </div>
+
+                    <div class="welcome-message">
+                        <p class="message-text">
+                            親愛的熊彥亭，<br>
+                            在這個特別的日子，讓我們一起進入魔法世界，<br>
+                            慶祝你的誕生，紀念我們的回憶，展望美好的未來。
+                        </p>
+                    </div>
+
+                    <div class="welcome-actions">
+                        <a href="celebration.html" class="action-btn primary-btn">
+                            <span class="btn-icon">🎉</span>
+                            開始慶祝
+                            <span class="btn-sparkle">✨</span>
+                        </a>
+                        <a href="#memories" class="action-btn secondary-btn">
+                            <span class="btn-icon">💝</span>
+                            瀏覽回憶
+                            <span class="btn-sparkle">💫</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 魔法符號裝飾 -->
+                <div class="magic-symbols">
+                    <div class="symbol symbol-1">🪄</div>
+                    <div class="symbol symbol-2">🔮</div>
+                    <div class="symbol symbol-3">✨</div>
+                    <div class="symbol symbol-4">🌟</div>
+                    <div class="symbol symbol-5">💫</div>
+                </div>
+            </section>
+
+            <!-- 特色預覽 -->
+            <section class="features-preview">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎂</div>
+                        <h3>個人化慶祝</h3>
+                        <p>專屬於熊彥亭的魔法慶祝儀式</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💝</div>
+                        <h3>珍貴回憶</h3>
+                        <p>收集我們共同的美好時刻</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔮</div>
+                        <h3>魔法許願</h3>
+                        <p>許下心願，讓夢想成真</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📸</div>
+                        <h3>動畫相簿</h3>
+                        <p>精緻的照片牆和互動效果</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 滾動提示 -->
+        <div class="scroll-hint">
+            <div class="scroll-text">向下探索更多魔法</div>
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </div>
+
+    <!-- 音頻控制 -->
+    <div class="audio-controls">
+        <button id="bgm-toggle" class="audio-btn">
+            <span class="audio-icon">🎵</span>
+            <span class="audio-text">背景音樂</span>
+        </button>
+    </div>
+
+    <!-- 背景音樂 -->
+    <audio id="bgm" loop preload="auto">
+        <source src="assets/audio/magic-bgm.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 腳本 -->
+    <script src="assets/js/particles-config.js"></script>
+    <script src="assets/js/three-bg.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
 
                 <div class="portal-options">
                     <div class="portal-card calendar-portal" data-page="calendar">

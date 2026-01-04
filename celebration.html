@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊彥亭的魔法慶祝 - 慶祝</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <!-- 載入動畫 -->
+    <div id="loading-screen">
+        <div class="magic-loader">
+            <div class="loader-sparkles">
+                <div class="sparkle sparkle-1">🎂</div>
+                <div class="sparkle sparkle-2">🎉</div>
+                <div class="sparkle sparkle-3">🎈</div>
+                <div class="sparkle sparkle-4">✨</div>
+            </div>
+            <div class="loader-ring"></div>
+            <div class="loader-text">準備慶祝儀式...</div>
+        </div>
+    </div>
+
+    <!-- 主要內容 -->
+    <div id="main-content" class="hidden">
+        <!-- 3D 背景場景 -->
+        <div id="three-bg"></div>
+
+        <!-- 粒子背景 -->
+        <div id="particles-js"></div>
+
+        <!-- 慶祝粒子 -->
+        <div id="celebration-particles"></div>
+
+        <!-- 導航 -->
+        <nav class="magic-nav">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <span class="logo-sparkle">✨</span>
+                    熊彥亭的魔法世界
+                    <span class="logo-sparkle">✨</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">歡迎</a>
+                    <a href="celebration.html" class="nav-link active">慶祝</a>
+                    <a href="memories.html" class="nav-link">回憶</a>
+                    <a href="wishes.html" class="nav-link">許願</a>
+                    <a href="gallery.html" class="nav-link">相簿</a>
+                </div>
+                <button class="nav-toggle">☰</button>
+            </div>
+        </nav>
+
+        <!-- 慶祝主區域 -->
+        <div class="celebration-container">
+            <!-- 生日標題 -->
+            <section class="birthday-header">
+                <div class="birthday-title">
+                    <h1>
+                        <span class="title-emoji">🎂</span>
+                        祝熊彥亭生日快樂！
+                        <span class="title-emoji">🎉</span>
+                    </h1>
+                    <div class="birthday-subtitle">
+                        在這個特別的日子，讓我們一起慶祝你的誕生
+                    </div>
+                </div>
+
+                <!-- 年齡計算器 -->
+                <div class="age-calculator">
+                    <div class="age-display">
+                        <div class="age-number" id="current-age">25</div>
+                        <div class="age-text">歲</div>
+                    </div>
+                    <div class="age-next">
+                        <span>距離下一個生日還有</span>
+                        <span id="days-until">365</span>
+                        <span>天</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 慶祝儀式 -->
+            <section class="celebration-ritual">
+                <div class="ritual-steps">
+                    <div class="ritual-step step-1">
+                        <div class="step-icon">🎈</div>
+                        <h3>點亮生日蠟燭</h3>
+                        <p>每根蠟燭都代表你生命中的美好時刻</p>
+                        <button class="ritual-btn" id="light-candles">點亮蠟燭</button>
+                    </div>
+
+                    <div class="ritual-step step-2">
+                        <div class="step-icon">🎵</div>
+                        <h3>播放慶祝音樂</h3>
+                        <p>讓美妙的旋律陪伴我們慶祝</p>
+                        <button class="ritual-btn" id="play-music">播放音樂</button>
+                    </div>
+
+                    <div class="ritual-step step-3">
+                        <div class="step-icon">🎊</div>
+                        <h3>釋放彩紙</h3>
+                        <p>讓整個空間充滿慶祝的氣氛</p>
+                        <button class="ritual-btn" id="release-confetti">釋放彩紙</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 蠟燭區域 -->
+            <div id="candles-section" class="candles-section hidden">
+                <div class="candles-container">
+                    <div class="birthday-cake">
+                        <div class="cake-base"></div>
+                        <div class="cake-layers">
+                            <div class="cake-layer layer-1"></div>
+                            <div class="cake-layer layer-2"></div>
+                            <div class="cake-layer layer-3"></div>
+                        </div>
+                        <div class="cake-decoration">
+                            <div class="decoration-flower flower-1">🌸</div>
+                            <div class="decoration-flower flower-2">🌺</div>
+                            <div class="decoration-flower flower-3">🌻</div>
+                        </div>
+                        <div class="candles">
+                            <div class="candle" data-candle="1">
+                                <div class="candle-body"></div>
+                                <div class="candle-flame"></div>
+                            </div>
+                            <div class="candle" data-candle="2">
+                                <div class="candle-body"></div>
+                                <div class="candle-flame"></div>
+                            </div>
+                            <div class="candle" data-candle="3">
+                                <div class="candle-body"></div>
+                                <div class="candle-flame"></div>
+                            </div>
+                            <div class="candle" data-candle="4">
+                                <div class="candle-body"></div>
+                                <div class="candle-flame"></div>
+                            </div>
+                            <div class="candle" data-candle="5">
+                                <div class="candle-body"></div>
+                                <div class="candle-flame"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cake-message">
+                        <p>熊彥亭，祝你年年歲歲都好，事事順心！</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 祝福訊息牆 -->
+            <section class="blessings-wall">
+                <h2 class="section-title">
+                    <span class="title-icon">💝</span>
+                    來自心底的祝福
+                    <span class="title-icon">💝</span>
+                </h2>
+
+                <div class="blessings-grid">
+                    <div class="blessing-card">
+                        <div class="blessing-content">
+                            <p class="blessing-text">"熊彥亭，你是這個世界上最特別的人。在你的生日，願你所有的夢想都能成真，所有的願望都能實現。"</p>
+                            <div class="blessing-author">—— 你的摯友</div>
+                        </div>
+                        <div class="blessing-decoration">✨</div>
+                    </div>
+
+                    <div class="blessing-card">
+                        <div class="blessing-content">
+                            <p class="blessing-text">"每一年都見證你的成長，每一個生日都慶祝你的精彩。熊彥亭，願你永遠保持那份純真和熱情。"</p>
+                            <div class="blessing-author">—— 永遠的支持者</div>
+                        </div>
+                        <div class="blessing-decoration">💫</div>
+                    </div>
+
+                    <div class="blessing-card">
+                        <div class="blessing-content">
+                            <p class="blessing-text">"在這個特別的日子，想告訴你：你值得世界上所有的美好。熊彥亭，生日快樂！"</p>
+                            <div class="blessing-author">—— 默默守護的人</div>
+                        </div>
+                        <div class="blessing-decoration">🌟</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 慶祝按鈕 -->
+            <section class="celebration-actions">
+                <div class="action-buttons">
+                    <a href="memories.html" class="celebration-btn">
+                        <span class="btn-icon">💝</span>
+                        回憶我們的點點滴滴
+                        <span class="btn-arrow">→</span>
+                    </a>
+
+                    <a href="wishes.html" class="celebration-btn">
+                        <span class="btn-icon">🔮</span>
+                        許下新年的願望
+                        <span class="btn-arrow">→</span>
+                    </a>
+
+                    <a href="gallery.html" class="celebration-btn">
+                        <span class="btn-icon">📸</span>
+                        瀏覽我們的合影
+                        <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- 慶祝音效 -->
+        <audio id="celebration-music" preload="auto">
+            <source src="assets/audio/celebration-bgm.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="candle-light" preload="auto">
+            <source src="assets/audio/candle-light.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="confetti-sound" preload="auto">
+            <source src="assets/audio/confetti.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- 腳本 -->
+        <script src="assets/js/particles-config.js"></script>
+        <script src="assets/js/three-bg.js"></script>
+        <script src="assets/js/celebration.js"></script>
+    </div>
+</body>
+</html>

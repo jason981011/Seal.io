@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊彥亭的魔法許願 - 許願</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <!-- 載入動畫 -->
+    <div id="loading-screen">
+        <div class="magic-loader">
+            <div class="loader-sparkles">
+                <div class="sparkle sparkle-1">🔮</div>
+                <div class="sparkle sparkle-2">✨</div>
+                <div class="sparkle sparkle-3">💫</div>
+                <div class="sparkle sparkle-4">🌟</div>
+            </div>
+            <div class="loader-ring"></div>
+            <div class="loader-text">準備魔法許願...</div>
+        </div>
+    </div>
+
+    <!-- 主要內容 -->
+    <div id="main-content" class="hidden">
+        <!-- 3D 背景場景 -->
+        <div id="three-bg"></div>
+
+        <!-- 粒子背景 -->
+        <div id="particles-js"></div>
+
+        <!-- 許願星星 -->
+        <div class="wishing-stars">
+            <div class="wishing-star star-1">⭐</div>
+            <div class="wishing-star star-2">🌟</div>
+            <div class="wishing-star star-3">✨</div>
+            <div class="wishing-star star-4">💫</div>
+            <div class="wishing-star star-5">🌙</div>
+        </div>
+
+        <!-- 導航 -->
+        <nav class="magic-nav">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <span class="logo-sparkle">✨</span>
+                    熊彥亭的魔法世界
+                    <span class="logo-sparkle">✨</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">歡迎</a>
+                    <a href="celebration.html" class="nav-link">慶祝</a>
+                    <a href="memories.html" class="nav-link">回憶</a>
+                    <a href="wishes.html" class="nav-link active">許願</a>
+                    <a href="gallery.html" class="nav-link">相簿</a>
+                </div>
+                <button class="nav-toggle">☰</button>
+            </div>
+        </nav>
+
+        <!-- 許願主區域 -->
+        <div class="wishes-container">
+            <!-- 許願標題 -->
+            <section class="wishes-header">
+                <h1 class="wishes-title">
+                    <span class="title-icon">🔮</span>
+                    魔法許願池
+                    <span class="title-icon">🔮</span>
+                </h1>
+                <p class="wishes-subtitle">
+                    熊彥亭，在這個特別的日子，讓我們一起許下心願，讓夢想成真
+                </p>
+            </section>
+
+            <!-- 許願池 -->
+            <section class="wishing-well">
+                <div class="well-container">
+                    <div class="well-structure">
+                        <div class="well-top">
+                            <div class="well-roof">
+                                <div class="roof-decoration">🏛️</div>
+                            </div>
+                            <div class="well-chain"></div>
+                        </div>
+                        <div class="well-body">
+                            <div class="well-water">
+                                <div class="water-ripples">
+                                    <div class="ripple ripple-1"></div>
+                                    <div class="ripple ripple-2"></div>
+                                    <div class="ripple ripple-3"></div>
+                                </div>
+                                <div class="water-reflection">
+                                    <div class="reflection-star star-1">⭐</div>
+                                    <div class="reflection-star star-2">🌟</div>
+                                    <div class="reflection-star star-3">✨</div>
+                                </div>
+                            </div>
+                            <div class="well-coins">
+                                <!-- 動態生成的許願幣 -->
+                            </div>
+                        </div>
+                        <div class="well-base">
+                            <div class="base-stones">
+                                <div class="stone stone-1">🪨</div>
+                                <div class="stone stone-2">🪨</div>
+                                <div class="stone stone-3">🪨</div>
+                                <div class="stone stone-4">🪨</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 許願表單 -->
+                    <div class="wish-form-container">
+                        <div class="wish-form">
+                            <h3>許下你的心願</h3>
+                            <form id="wish-form">
+                                <div class="form-group">
+                                    <label for="wish-text">你的心願</label>
+                                    <textarea id="wish-text" placeholder="寫下你對熊彥亭的祝福，或許下你們共同的心願..." required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>選擇許願幣</label>
+                                    <div class="coin-options">
+                                        <div class="coin-option" data-coin="🪙">
+                                            <div class="coin-icon">🪙</div>
+                                            <div class="coin-name">金幣</div>
+                                        </div>
+                                        <div class="coin-option" data-coin="💰">
+                                            <div class="coin-icon">💰</div>
+                                            <div class="coin-name">銀幣</div>
+                                        </div>
+                                        <div class="coin-option" data-coin="💎">
+                                            <div class="coin-icon">💎</div>
+                                            <div class="coin-name">寶石</div>
+                                        </div>
+                                        <div class="coin-option" data-coin="💫">
+                                            <div class="coin-icon">💫</div>
+                                            <div class="coin-name">星星</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="wish-submit-btn">
+                                    <span class="btn-icon">🪄</span>
+                                    投入許願池
+                                    <span class="btn-sparkle">✨</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 已實現的願望 -->
+            <section class="fulfilled-wishes">
+                <h2 class="section-title">
+                    <span class="title-icon">✨</span>
+                    願望實現牆
+                    <span class="title-icon">✨</span>
+                </h2>
+
+                <div class="fulfilled-grid">
+                    <div class="fulfilled-card">
+                        <div class="fulfilled-icon">🎓</div>
+                        <h4>學業進步</h4>
+                        <p>"願熊彥亭在學業上更進一步，實現自己的目標"</p>
+                        <div class="fulfilled-date">2024.01.16</div>
+                        <div class="fulfilled-status">✅ 已實現</div>
+                    </div>
+
+                    <div class="fulfilled-card">
+                        <div class="fulfilled-icon">💪</div>
+                        <h4>健康平安</h4>
+                        <p>"願熊彥亭永遠健康快樂，每天都充滿活力"</p>
+                        <div class="fulfilled-date">2024.01.16</div>
+                        <div class="fulfilled-status">✅ 已實現</div>
+                    </div>
+
+                    <div class="fulfilled-card">
+                        <div class="fulfilled-icon">❤️</div>
+                        <h4>幸福美滿</h4>
+                        <p>"願熊彥亭找到真正愛他的人，過上幸福的生活"</p>
+                        <div class="fulfilled-date">2024.01.16</div>
+                        <div class="fulfilled-status">✨ 實現中</div>
+                    </div>
+
+                    <div class="fulfilled-card">
+                        <div class="fulfilled-icon">🚀</div>
+                        <h4>夢想成真</h4>
+                        <p>"願熊彥亭的每一個夢想都能夠實現"</p>
+                        <div class="fulfilled-date">2024.01.16</div>
+                        <div class="fulfilled-status">✨ 實現中</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 許願儀式 -->
+            <section class="wish-ritual">
+                <h2 class="section-title">
+                    <span class="title-icon">🪄</span>
+                    許願儀式指南
+                    <span class="title-icon">🪄</span>
+                </h2>
+
+                <div class="ritual-steps">
+                    <div class="ritual-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>靜心冥想</h4>
+                            <p>閉上眼睛，深呼吸，專注於你的心願</p>
+                        </div>
+                    </div>
+
+                    <div class="ritual-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>真誠許願</h4>
+                            <p>用心寫下你的祝福和願望</p>
+                        </div>
+                    </div>
+
+                    <div class="ritual-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>投入許願池</h4>
+                            <p>選擇一枚許願幣，投入魔法許願池</p>
+                        </div>
+                    </div>
+
+                    <div class="ritual-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>心懷信念</h4>
+                            <p>相信你的願望一定會實現</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 許願統計 -->
+            <section class="wish-stats">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number" id="total-wishes">24</div>
+                        <div class="stat-label">個心願</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="fulfilled-wishes-count">18</div>
+                        <div class="stat-label">已實現</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="pending-wishes">6</div>
+                        <div class="stat-label">實現中</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 許願音效 -->
+        <audio id="wish-coin-sound" preload="auto">
+            <source src="assets/audio/wish-coin.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="wish-magic-sound" preload="auto">
+            <source src="assets/audio/wish-magic.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- 腳本 -->
+        <script src="assets/js/particles-config.js"></script>
+        <script src="assets/js/three-bg.js"></script>
+        <script src="assets/js/wishes.js"></script>
+    </div>
+</body>
+</html>

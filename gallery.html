@@ -3,51 +3,395 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>魔法畫廊 - Seal.io</title>
+    <title>熊彥亭的魔法相簿 - 相簿</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <!-- 導航 -->
-    <nav class="magic-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">🧙‍♂️ 魔法世界</a>
-            <div class="nav-links">
-                <a href="calendar.html" class="nav-link">行事曆</a>
-                <a href="birthday.html" class="nav-link">慶祝</a>
-                <a href="world.html" class="nav-link">探索</a>
-                <a href="gallery.html" class="nav-link active">畫廊</a>
+    <!-- 載入動畫 -->
+    <div id="loading-screen">
+        <div class="magic-loader">
+            <div class="loader-sparkles">
+                <div class="sparkle sparkle-1">📸</div>
+                <div class="sparkle sparkle-2">🎭</div>
+                <div class="sparkle sparkle-3">🎨</div>
+                <div class="sparkle sparkle-4">✨</div>
             </div>
-            <button class="nav-toggle">☰</button>
+            <div class="loader-ring"></div>
+            <div class="loader-text">準備魔法相簿...</div>
         </div>
-    </nav>
+    </div>
 
-    <!-- 魔法畫廊 -->
-    <div class="magic-gallery">
+    <!-- 主要內容 -->
+    <div id="main-content" class="hidden">
+        <!-- 3D 背景場景 -->
+        <div id="three-bg"></div>
+
         <!-- 粒子背景 -->
         <div id="particles-js"></div>
 
-        <!-- 畫廊標題 -->
-        <div class="gallery-header">
-            <h1 class="gallery-title">魔法畫廊</h1>
-            <p class="gallery-subtitle">珍藏的魔法回憶</p>
+        <!-- 相簿粒子 -->
+        <div class="gallery-particles">
+            <div class="gallery-particle particle-1">📸</div>
+            <div class="gallery-particle particle-2">🎭</div>
+            <div class="gallery-particle particle-3">🎨</div>
+            <div class="gallery-particle particle-4">✨</div>
+            <div class="gallery-particle particle-5">💫</div>
         </div>
 
-        <!-- 相簿分類 -->
-        <div class="album-categories">
-            <div class="category-tabs">
-                <button class="category-tab active" data-category="all">全部</button>
-                <button class="category-tab" data-category="childhood">童年時光</button>
-                <button class="category-tab" data-category="family">家人陪伴</button>
-                <button class="category-tab" data-category="friends">朋友們</button>
-                <button class="category-tab" data-category="magic">魔法時刻</button>
+        <!-- 導航 -->
+        <nav class="magic-nav">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <span class="logo-sparkle">✨</span>
+                    熊彥亭的魔法世界
+                    <span class="logo-sparkle">✨</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">歡迎</a>
+                    <a href="celebration.html" class="nav-link">慶祝</a>
+                    <a href="memories.html" class="nav-link">回憶</a>
+                    <a href="wishes.html" class="nav-link">許願</a>
+                    <a href="gallery.html" class="nav-link active">相簿</a>
+                </div>
+                <button class="nav-toggle">☰</button>
+            </div>
+        </nav>
+
+        <!-- 相簿主區域 -->
+        <div class="gallery-container">
+            <!-- 相簿標題 -->
+            <section class="gallery-header">
+                <h1 class="gallery-title">
+                    <span class="title-icon">📸</span>
+                    魔法相簿
+                    <span class="title-icon">📸</span>
+                </h1>
+                <p class="gallery-subtitle">
+                    記錄我們每一個珍貴的瞬間
+                </p>
+            </section>
+
+            <!-- 相簿分類 -->
+            <section class="gallery-categories">
+                <div class="category-tabs">
+                    <button class="category-tab active" data-category="all">
+                        <span class="tab-icon">🌟</span>
+                        全部
+                    </button>
+                    <button class="category-tab" data-category="celebration">
+                        <span class="tab-icon">🎂</span>
+                        慶祝時刻
+                    </button>
+                    <button class="category-tab" data-category="memories">
+                        <span class="tab-icon">💝</span>
+                        美好回憶
+                    </button>
+                    <button class="category-tab" data-category="daily">
+                        <span class="tab-icon">🌸</span>
+                        日常生活
+                    </button>
+                    <button class="category-tab" data-category="special">
+                        <span class="tab-icon">✨</span>
+                        特別時刻
+                    </button>
+                </div>
+            </section>
+
+            <!-- 相簿網格 -->
+            <section class="gallery-grid-section">
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- 慶祝時刻 -->
+                    <div class="gallery-item" data-category="celebration">
+                        <div class="gallery-image">
+                            <div class="placeholder-image">🎂</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>生日慶祝</h4>
+                                    <p>熊彥亭的生日派對</p>
+                                    <div class="image-date">2024.01.16</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="celebration">
+                        <div class="gallery-image">
+                            <div class="placeholder-image">🎈</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>慶祝儀式</h4>
+                                    <p>溫馨的慶祝時刻</p>
+                                    <div class="image-date">2024.01.16</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 美好回憶 -->
+                    <div class="gallery-item" data-category="memories">
+                        <div class="gallery-image">
+                            <div class="placeholder-image">🌸</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>春天的約定</h4>
+                                    <p>櫻花盛開的季節</p>
+                                    <div class="image-date">2024.03.15</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="memories">
+                        <div class="gallery-image">
+                            <div class="placeholder-image">🏖️</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>海邊的回憶</h4>
+                                    <p>夏日的美好時光</p>
+                                    <div class="image-date">2024.07.20</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="memories">
+                        <div class="gallery-image">
+                            <div class="placeholder-image">🍂</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>秋天的溫暖</h4>
+                                    <p>楓葉紅了的季節</p>
+                                    <div class="image-date">2023.11.12</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 日常生活 -->
+                    <div class="gallery-item" data-category="daily">
+                        <div class="gallery-image">
+                            <div class="placeholder-image">☕</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>早晨的咖啡</h4>
+                                    <p>開始新的一天</p>
+                                    <div class="image-date">2024.02.14</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="daily">
+                        <div class="gallery-image">
+                            <div class="placeholder-image">📚</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>學習時光</h4>
+                                    <p>專注的學習時刻</p>
+                                    <div class="image-date">2024.03.08</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="daily">
+                        <div class="gallery-image">
+                            <div class="placeholder-image">🚶</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>散步時光</h4>
+                                    <p>放鬆心情的時刻</p>
+                                    <div class="image-date">2024.04.22</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 特別時刻 -->
+                    <div class="gallery-item" data-category="special">
+                        <div class="gallery-image">
+                            <div class="placeholder-image">🎓</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>學業里程碑</h4>
+                                    <p>重要的學業成就</p>
+                                    <div class="image-date">2023.06.30</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="special">
+                        <div class="gallery-image">
+                            <div class="placeholder-image">🎨</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>創意火花</h4>
+                                    <p>藝術創作的靈感</p>
+                                    <div class="image-date">2023.09.15</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item" data-category="special">
+                        <div class="gallery-image">
+                            <div class="placeholder-image">🌟</div>
+                            <div class="image-overlay">
+                                <div class="overlay-content">
+                                    <h4>夢想實現</h4>
+                                    <p>每一個進步的足跡</p>
+                                    <div class="image-date">2024.12.01</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 相簿統計 -->
+            <section class="gallery-stats">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number" id="total-photos">12</div>
+                        <div class="stat-label">張照片</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="total-memories">24</div>
+                        <div class="stat-label">個回憶</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="years-together">2</div>
+                        <div class="stat-label">年時光</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 上傳新照片 -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h2 class="section-title">
+                        <span class="title-icon">📤</span>
+                        添加新回憶
+                        <span class="title-icon">📤</span>
+                    </h2>
+
+                    <div class="upload-area" id="upload-area">
+                        <div class="upload-icon">📸</div>
+                        <div class="upload-text">
+                            <p>拖拽照片到這裡，或點擊選擇文件</p>
+                            <p class="upload-hint">支持 JPG、PNG、GIF 格式</p>
+                        </div>
+                        <input type="file" id="photo-upload" accept="image/*" multiple style="display: none;">
+                        <button class="upload-btn" id="upload-btn">選擇照片</button>
+                    </div>
+
+                    <div class="upload-form hidden" id="upload-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="photo-title">照片標題</label>
+                                <input type="text" id="photo-title" placeholder="為這張照片取個名字" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="photo-category">分類</label>
+                                <select id="photo-category" required>
+                                    <option value="celebration">慶祝時刻</option>
+                                    <option value="memories">美好回憶</option>
+                                    <option value="daily">日常生活</option>
+                                    <option value="special">特別時刻</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="photo-description">描述</label>
+                            <textarea id="photo-description" placeholder="描述這個時刻..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="photo-date">日期</label>
+                            <input type="date" id="photo-date" required>
+                        </div>
+                        <div class="form-actions">
+                            <button class="cancel-btn" id="cancel-upload">取消</button>
+                            <button class="submit-btn" id="submit-upload">添加照片</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 相簿留言 -->
+            <section class="gallery-comments">
+                <h2 class="section-title">
+                    <span class="title-icon">💬</span>
+                    相簿留言
+                    <span class="title-icon">💬</span>
+                </h2>
+
+                <div class="comments-container">
+                    <div class="comment-item">
+                        <div class="comment-avatar">😊</div>
+                        <div class="comment-content">
+                            <div class="comment-author">摯友</div>
+                            <div class="comment-text">每張照片都記錄著美好的回憶，謝謝你分享這些珍貴的時刻！</div>
+                            <div class="comment-date">2024.01.16</div>
+                        </div>
+                    </div>
+
+                    <div class="comment-item">
+                        <div class="comment-avatar">🌟</div>
+                        <div class="comment-content">
+                            <div class="comment-author">家人</div>
+                            <div class="comment-text">看著你的成長歷程，每一個階段都充滿了美好。繼續加油！</div>
+                            <div class="comment-date">2024.01.16</div>
+                        </div>
+                    </div>
+
+                    <div class="comment-item">
+                        <div class="comment-avatar">💝</div>
+                        <div class="comment-content">
+                            <div class="comment-author">知己</div>
+                            <div class="comment-text">這些照片讓我想起我們一起度過的每一個快樂時光。珍惜當下，期待未來！</div>
+                            <div class="comment-date">2024.01.16</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 圖片燈箱 -->
+        <div id="lightbox" class="lightbox hidden">
+            <div class="lightbox-overlay"></div>
+            <div class="lightbox-content">
+                <button class="lightbox-close">×</button>
+                <button class="lightbox-prev">‹</button>
+                <button class="lightbox-next">›</button>
+
+                <div class="lightbox-image-container">
+                    <img id="lightbox-image" src="" alt="">
+                </div>
+
+                <div class="lightbox-info">
+                    <h3 id="lightbox-title"></h3>
+                    <p id="lightbox-description"></p>
+                    <div class="lightbox-meta">
+                        <span id="lightbox-date"></span>
+                        <span id="lightbox-category"></span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 相片網格 -->
+        <!-- 腳本 -->
+        <script src="assets/js/particles-config.js"></script>
+        <script src="assets/js/three-bg.js"></script>
+        <script src="assets/js/gallery.js"></script>
+    </div>
+</body>
+</html>
         <div class="photo-grid" id="photo-grid">
             <!-- 相片項目將通過JavaScript動態生成 -->
         </div>
