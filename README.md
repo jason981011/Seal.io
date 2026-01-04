@@ -2,7 +2,7 @@
 
 一個極其精緻的哈利波特主題生日慶祝網頁，一開始看起來像普通行事曆，但點擊生日事件會打開魔法般的慶生頁面。
 
-🌟 **[在線體驗](https://jason981011.github.io/magical-birthday-celebration/)** 🌟
+🌟 **[在線體驗](https://jason981011.github.io/seal.io/)** 🌟
 
 ## ✨ 功能特色
 
@@ -18,8 +18,8 @@
 ### 本地運行
 ```bash
 # 克隆倉庫
-git clone https://github.com/jason981011/magical-birthday-celebration.git
-cd magical-birthday-celebration
+git clone https://github.com/jason981011/seal.io.git
+cd seal.io
 
 # 啟動本地服務器
 python3 -m http.server 8000
@@ -28,12 +28,11 @@ python3 -m http.server 8000
 ```
 
 ### GitHub Pages 部署
-1. Fork 此倉庫
-2. 進入 Settings > Pages
-3. 將 Source 設置為 "Deploy from a branch"
-4. 選擇 `gh-pages` 分支
-5. 保存設定
-6. 您的網站將在 `https://[username].github.io/magical-birthday-celebration/` 上線
+1. 進入 Settings > Pages
+2. 將 Source 設置為 "Deploy from a branch"
+3. 選擇 `gh-pages` 分支
+4. 保存設定
+5. 您的網站將在 `https://jason981011.github.io/seal.io/` 上線
 
 ## 🎮 使用指南
 
@@ -53,6 +52,61 @@ python3 -m http.server 8000
 - **Particles.js** - 粒子效果系統
 
 ## 📁 專案結構
+
+```
+seal.io/
+├── index.html              # 魔法入口頁面
+├── calendar.html           # 互動式行事曆
+├── birthday.html           # 慶祝頁面
+├── world.html              # 世界探索頁面
+├── gallery.html            # 魔法畫廊
+├── styles.css              # 統一樣式表 (2000+行)
+├── package.json            # 專案配置
+└── assets/
+    ├── js/                 # JavaScript 模塊
+    │   ├── main.js        # 主入口邏輯
+    │   ├── calendar.js    # 行事曆功能
+    │   ├── birthday.js    # 慶祝頁面邏輯
+    │   ├── world.js       # 世界探索邏輯
+    │   ├── gallery.js     # 畫廊功能
+    │   ├── particles-config.js  # 粒子配置
+    │   └── three-bg.js    # 3D背景
+    ├── images/             # 圖片資源
+    ├── audio/              # 音頻資源
+    └── fonts/              # 自訂字體
+```
+
+## 🎨 自訂設定
+
+### 修改生日日期
+在 `assets/js/calendar.js` 中修改 `birthdayDay` 變數：
+```javascript
+const birthdayDay = 15; // 每月15日
+```
+
+### 添加個人圖片
+將圖片放入 `assets/images/` 目錄，並在相應的HTML文件中引用。
+
+### 調整顏色主題
+在 `styles.css` 中修改CSS變數：
+```css
+:root {
+  --primary-color: #your-color;
+  --secondary-color: #your-color;
+}
+```
+
+## 📄 授權
+
+MIT License - 詳見 [LICENSE](LICENSE) 文件
+
+## 🤝 貢獻
+
+歡迎提交 Issue 和 Pull Request！
+
+---
+
+**魔法永遠存在於你的心中！** 🪄✨🎉
 
 ```
 magical-birthday-celebration/
@@ -108,3 +162,6 @@ MIT License - 詳見 [LICENSE](LICENSE) 文件
 ---
 
 **魔法永遠存在於你的心中！** 🪄✨🎉
+=======
+# Seal.io
+>>>>>>> 876fb09b87e049aa05d17b79d0c3e47c122b0f2e
