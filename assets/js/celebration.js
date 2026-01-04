@@ -164,8 +164,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // 顯示慶祝訊息
         showCelebrationMessage();
 
-        // 播放音效（如果有的話）
-        // playCelebrationSound();
+        // 播放慶祝音樂
+        playCelebrationSound();
 
         // 震動效果
         gsap.to('body', {
@@ -195,6 +195,17 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 confetti.remove();
             }, 5000);
+        }
+    }
+
+    // 播放慶祝音樂
+    function playCelebrationSound() {
+        const music = document.getElementById('celebration-music');
+        if (music) {
+            music.currentTime = 0; // 從頭開始播放
+            music.play().catch(e => {
+                console.log('音樂播放失敗:', e);
+            });
         }
     }
 
